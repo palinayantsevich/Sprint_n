@@ -35,8 +35,7 @@ class TestRoutePage:
         'SCENARIO #2.1: Verify that if user specifies different addresses in "from" and "to" fields - route selection section is displayed.')
     def test_route_section_displayed_if_specify_different_addresses(self, route_page):
         route_page.wait_fill_from_and_where_fields(RoutePageData.ADDRESS_HAM_VAL, RoutePageData.ADDRESS_ZUB_BLVD)
-        route_section_is_displayed = route_page.check_route_section_displayed()
-        assert route_section_is_displayed == True
+        assert route_page.check_route_section_displayed()
 
     @allure.title(
         'SCENARIO #2.2: Verify that if user specifies same addresses in "from" and "to" fields - special text and duration is is displayed in the route selection section.')
@@ -82,8 +81,7 @@ class TestRoutePage:
         route_page.wait_fill_from_and_where_fields(RoutePageData.ADDRESS_HAM_VAL, RoutePageData.ADDRESS_ZUB_BLVD)
         route_page.wait_click_on_fast_tab()
         route_page.wait_click_on_get_taxi_button()
-        tariff_picker_section_is_displayed = route_page.check_taxi_tariff_section_displayed()
-        assert tariff_picker_section_is_displayed == True
+        assert route_page.check_taxi_tariff_section_displayed()
 
     @allure.title(
         'SCENARIO #3.4: Verify that "Book" button is clickable if select "Personal" route section and "Drive" movement type.')
@@ -92,8 +90,7 @@ class TestRoutePage:
         route_page.wait_click_on_personal_tab()
         route_page.wait_click_on_drive_movement_icon()
         route_page.wait_click_on_book_button()
-        tariff_picker_section_is_displayed = route_page.check_taxi_tariff_section_displayed()
-        assert tariff_picker_section_is_displayed == True
+        assert route_page.check_taxi_tariff_section_displayed()
 
     @allure.title(
         'SCENARIO #4.1.1: Verify that if user selects "Fast" route and click on "Get Taxi" button - 6 taxi tariff types are available.')
@@ -102,8 +99,7 @@ class TestRoutePage:
         route_page.wait_fill_from_and_where_fields(RoutePageData.ADDRESS_HAM_VAL, RoutePageData.ADDRESS_ZUB_BLVD)
         route_page.wait_click_on_fast_tab()
         route_page.wait_click_on_get_taxi_button()
-        taxi_tariff_is_displayed = route_page.wait_check_taxi_tariff_displayed(taxi_tariff)
-        assert taxi_tariff_is_displayed == True
+        assert route_page.wait_check_taxi_tariff_displayed(taxi_tariff)
 
     @allure.title(
         'SCENARIO #4.1.2: Verify that if user selects "Fast" route and click on "Get Taxi" button - only 1 taxi tariff is active.')
@@ -158,8 +154,7 @@ class TestRoutePage:
         route_page.wait_fill_from_and_where_fields(RoutePageData.ADDRESS_HAM_VAL, RoutePageData.ADDRESS_ZUB_BLVD)
         route_page.wait_click_on_fast_tab()
         route_page.wait_click_on_get_taxi_button()
-        field_is_displayed = route_page.check_field_is_displayed_in_order_taxi_form(locator)
-        assert field_is_displayed == True
+        assert route_page.check_field_is_displayed_in_order_taxi_form(locator)
 
     @allure.title(
         'SCENARIO #5.1: Verify that if user selects "For work" taxi tariff and order taxi with "Table for notebook" option enabled - search a taxi popup is displayed correctly.')
@@ -171,16 +166,11 @@ class TestRoutePage:
         route_page.wait_click_on_order_requirements_element()
         route_page.wait_click_on_toggle_notebook_table()
         route_page.wait_click_on_order_taxi_button()
-        search_taxi_popup_is_displayed = route_page.check_order_taxi_popup_is_displayed()
-        search_taxi_popup_heading = route_page.check_heading_in_search_taxi_popup()
-        time_counter_is_displayed = route_page.check_time_counter_in_search_taxi_popup_is_displayed()
-        cancel_button_is_displayed = route_page.check_cancel_button_in_popup_is_displayed()
-        details_button_is_displayed = route_page.check_details_button_in_popup_is_displayed()
-        assert search_taxi_popup_is_displayed == True
-        assert search_taxi_popup_heading == RoutePageData.SEARCH_TAXI_POPUP_HEADING
-        assert time_counter_is_displayed == True
-        assert cancel_button_is_displayed == True
-        assert details_button_is_displayed == True
+        assert route_page.check_order_taxi_popup_is_displayed()
+        assert route_page.check_heading_in_search_taxi_popup() == RoutePageData.SEARCH_TAXI_POPUP_HEADING
+        assert route_page.check_time_counter_in_search_taxi_popup_is_displayed()
+        assert route_page.check_cancel_button_in_popup_is_displayed()
+        assert route_page.check_details_button_in_popup_is_displayed()
 
     @allure.title(
         'SCENARIO #5.2: Verify that if user selects "For work" taxi tariff and order taxi with "Table for notebook" option enabled - search a taxi popup is displayed correctly.')
@@ -193,22 +183,22 @@ class TestRoutePage:
         route_page.wait_click_on_toggle_notebook_table()
         route_page.wait_click_on_order_taxi_button()
         route_page.wait_time_counter_is_not_displayed()
-        completed_order_popup_heading = route_page.check_heading_in_completed_order_popup()
-        car_number_is_displayed = route_page.check_car_number_in_popup_is_displayed()
-        taxi_tariff_image_is_displayed = route_page.check_taxi_tariff_image_in_popup_is_displayed()
-        driver_name_is_displayed = route_page.check_driver_name_in_popup_is_displayed()
-        driver_image_is_displayed = route_page.check_driver_image_in_popup_is_displayed()
-        driver_rating_is_displayed = route_page.check_driver_rating_in_popup_is_displayed()
-        cancel_button_is_displayed = route_page.check_cancel_button_in_popup_is_displayed()
-        details_button_is_displayed = route_page.check_details_button_in_popup_is_displayed()
-        assert RoutePageData.COMPLETED_ORDER_POPUP_HEADING in completed_order_popup_heading
-        assert car_number_is_displayed == True
-        assert taxi_tariff_image_is_displayed == True
-        assert driver_name_is_displayed == True
-        assert driver_image_is_displayed == True
-        assert driver_rating_is_displayed == True
-        assert cancel_button_is_displayed == True
-        assert details_button_is_displayed == True
+        # completed_order_popup_heading = route_page.check_heading_in_completed_order_popup()
+        # car_number_is_displayed = route_page.check_car_number_in_popup_is_displayed()
+        # taxi_tariff_image_is_displayed = route_page.check_taxi_tariff_image_in_popup_is_displayed()
+        # driver_name_is_displayed = route_page.check_driver_name_in_popup_is_displayed()
+        # driver_image_is_displayed = route_page.check_driver_image_in_popup_is_displayed()
+        # driver_rating_is_displayed = route_page.check_driver_rating_in_popup_is_displayed()
+        # cancel_button_is_displayed = route_page.check_cancel_button_in_popup_is_displayed()
+        # details_button_is_displayed = route_page.check_details_button_in_popup_is_displayed()
+        assert RoutePageData.COMPLETED_ORDER_POPUP_HEADING in route_page.check_heading_in_completed_order_popup()
+        assert route_page.check_car_number_in_popup_is_displayed()
+        assert route_page.check_taxi_tariff_image_in_popup_is_displayed()
+        assert route_page.check_driver_name_in_popup_is_displayed()
+        assert route_page.check_driver_image_in_popup_is_displayed()
+        assert route_page.check_driver_rating_in_popup_is_displayed()
+        assert route_page.check_cancel_button_in_popup_is_displayed()
+        assert route_page.check_details_button_in_popup_is_displayed()
 
     @allure.title(
         'SCENARIO #5.3: Verify that initial drive price in "For work" taxi tariff card is the same as in details section in completed order popup.')
